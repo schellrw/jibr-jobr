@@ -8,6 +8,7 @@ class AppConfig(BaseSettings):
     
     SHARDS: str
     SALESFORCE: str
+    PYDEVD_DISABLE_FILE_VALIDATION: int
     
     def __init__(self):
         load_dotenv()

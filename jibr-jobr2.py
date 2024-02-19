@@ -1,13 +1,12 @@
 """
 LLM to synthesize job descriptions from freeform text.
-Uses Salesforce/xgen-7b-8k-inst LLM from Hugging Face.
+Uses "Salesforce/xgen-7b-8k-inst" LLM from Hugging Face.
 """
 
 # Load packages
-import torch
-from transformers import AutoConfig, AutoTokenizer, AutoModel, AutoModelForCausalLM, pipeline
-from pathlib import Path
+from transformers import pipeline
 import streamlit as st
+# from pathlib import Path
 
 # Load user-defined modules
 from utils import config  #config import Config
@@ -16,27 +15,33 @@ from utils import config  #config import Config
 config = config.AppConfig()
 
 # Instantiate model configuration
-model_config = AutoConfig.from_pretrained(Path(config.SHARDS))
+# model_config = AutoConfig.from_pretrained(Path(config.SHARDS))
 
-model = AutoModel.from_config(model_config)
+# model = AutoModel.from_config(model_config)
 
-# model.load_state_dict(torch.load(Path(config.SHARDS)))  ##, map_location="cpu"))
-# print(model)
+# # model.load_state_dict(torch.load(Path(config.SHARDS)))  ##, map_location="cpu"))
+# # print(model)
 
-tokenizer = AutoTokenizer.from_pretrained(Path(config.SALESFORCE))
+# tokenizer = AutoTokenizer.from_pretrained(Path(config.SALESFORCE))
 
 # Create pipeline for modeling
-####summarizer = pipeline("summarization", model=config.SHARDS, tokenizer=config.SALESFORCE, config=model_config)
+pipe = pipeline("summarization", model=config.SALESFORCE)  ####, config=model_config)
 
 # Summarize text into a job description.
 @st.cache_data
 def summarize(text: str) -> str:
     header = "Application to generate formal job descriptions using Salesforce/xgen LLM for summarization."
-    text = header + "### User: Please summarize this into a job description. \n\n" + text + "\n\n###"
+    text = header + "#### User: Please summarize this into a job description. \n\n" + text + "\n\n####"
 
+    pipe_out = pipe(text)
+
+    summary = pipe_out[0]["summary_text"]
+    summary = "#### Job Description: ".join(pipe_out[0]["summary_text"]) 
+                                            ##.split("#### Job Description: ")[:2]) + "\n\n####" + pipe_out[0]["summary_text"] + "\n\n####"  #tokenizer.decode(outputs[0], skip_special_tokens=True)  ##.lstrip()
+    return summary
     # input_ids = tokenizer(text, return_tensors="pt").input_ids
-    inputs = tokenizer(text, return_tensors="pt") ##.input_ids
-    outputs = model(inputs)
+    # inputs = tokenizer(text, return_tensors="pt") ##.input_ids
+    # outputs = model(inputs)
     # outputs = model.generate(
     #     **inputs, 
     #     max_length=1024,
@@ -45,16 +50,16 @@ def summarize(text: str) -> str:
     #     top_p=0.95,
     #     temperature=0.7
     # )
-    summary = tokenizer.decode(outputs[0], skip_special_tokens=True)  ##.lstrip()
+    # summary = tokenizer.decode(outputs[0], skip_special_tokens=True)  ##.lstrip()
     # summary = summary.split("### Job Description:")[1]
     # summary = summary.split("<|endoftext|>")[0]
 
     #synthesis = gr.Textbox(value=summary)
-    return summary
+    # return summary
 
 # Add title and subtitle to the main interface of the app
 st.title("Job Description Synthesis")
-st.markdown("#JIBr-JOBr, from Salesforce/xgen LLM")
+st.markdown("#jibr-jobr, developed by Artificial Intelligentsia, LLC")
 # st.sidebar.markdown("Email: schell.rw@gmail.com")
 
 st.subheader(":blue[This application takes the messy jibber-jabber and makes it beautiful, with a click of a button.]")

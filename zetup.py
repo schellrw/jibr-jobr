@@ -5,28 +5,46 @@ Uses Salesforce/xgen-7b-8k-inst LLM from Hugging Face.
 
 # Load packages
 import torch
-from transformers import AutoConfig, AutoTokenizer, AutoModel, AutoModelForCausalLM, pipeline
+from transformers import AutoConfig, AutoTokenizer, AutoModelForCausalLM, pipeline
 from pathlib import Path
 import streamlit as st
 
 # Load user-defined modules
 from utils import config  #config import Config
 
-# Instantiate app configuration
+# Instantiate configuration
 config = config.AppConfig()
 
-# Instantiate model configuration
-model_config = AutoConfig.from_pretrained(Path(config.SHARDS))
 
-model = AutoModel.from_config(model_config)
+# XGEN = config.SALESFORCE
+# MODEL = Path(config.CACHE_SHARDS)
 
-# model.load_state_dict(torch.load(Path(config.SHARDS)))  ##, map_location="cpu"))
-# print(model)
+# Load tokenizer
+@st.cache_data
+def load_tokenizer(repo):
+    _tokenizer = AutoTokenizer.from_pretrained(
+        repo,
+        trust_remote_code=True,
+    )
+    return _tokenizer
 
-tokenizer = AutoTokenizer.from_pretrained(Path(config.SALESFORCE))
 
-# Create pipeline for modeling
-####summarizer = pipeline("summarization", model=config.SHARDS, tokenizer=config.SALESFORCE, config=model_config)
+tokenizer = load_tokenizer(config.SALESFORCE)  ##(XGEN)
+
+
+# Load model
+@st.cache_data
+def load_model(repo):
+    _model = AutoModelForCausalLM.from_pretrained(
+        repo,
+        torch_dtype=torch.bfloat16,
+        cache_dir="./.cache/",
+        load_in_8bit=True,)
+    return _model
+
+
+model = load_model(Path(config.CACHE_SHARDS))
+
 
 # Summarize text into a job description.
 @st.cache_data
@@ -35,17 +53,16 @@ def summarize(text: str) -> str:
     text = header + "### User: Please summarize this into a job description. \n\n" + text + "\n\n###"
 
     # input_ids = tokenizer(text, return_tensors="pt").input_ids
-    inputs = tokenizer(text, return_tensors="pt") ##.input_ids
-    outputs = model(inputs)
-    # outputs = model.generate(
-    #     **inputs, 
-    #     max_length=1024,
-    #     do_sample=True,
-    #     top_k=50,
-    #     top_p=0.95,
-    #     temperature=0.7
-    # )
-    summary = tokenizer.decode(outputs[0], skip_special_tokens=True)  ##.lstrip()
+    inputs = tokenizer(text, return_tensors="pt").input_ids
+    outputs = model.generate(
+        **inputs, 
+        max_length=1024,
+        do_sample=True,
+        top_k=50,
+        top_p=0.95,
+        temperature=0.7
+    )
+    summary = tokenizer.decode(outputs[0], skip_special_tokens=True).lstrip()
     # summary = summary.split("### Job Description:")[1]
     # summary = summary.split("<|endoftext|>")[0]
 
