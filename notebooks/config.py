@@ -7,6 +7,8 @@ class AppConfig(BaseSettings):
     """The configuration class."""
     
     SHARDS: str
+    MODEL: str
+    SNAP: str
     SALESFORCE: str
     PYDEVD_DISABLE_FILE_VALIDATION: int
     
