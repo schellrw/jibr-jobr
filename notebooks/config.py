@@ -7,10 +7,8 @@ class AppConfig(BaseSettings):
     """The configuration class."""
     
     SHARDS: str
-    MODEL: str
-    SNAP: str
     SALESFORCE: str
-    PYDEVD_DISABLE_FILE_VALIDATION: int
+    ## PYDEVD_DISABLE_FILE_VALIDATION: int ## = 1
     
     def __init__(self):
         load_dotenv()
