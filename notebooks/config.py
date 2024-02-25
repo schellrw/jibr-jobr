@@ -6,9 +6,11 @@ from pydantic_settings import BaseSettings
 class AppConfig(BaseSettings):
     """The configuration class."""
     
-    SHARDS: str
-    SALESFORCE: str
-    ## PYDEVD_DISABLE_FILE_VALIDATION: int ## = 1
+    SHARDS: str | None = None
+    SALESFORCE: str | None = None
+    HF_HOME: str | None = None
+    HF_DATASETS_CACHE: str | None = None
+    TRANSFORMERS_CACHE: str | None = None
     
     def __init__(self):
         load_dotenv()
