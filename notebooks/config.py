@@ -9,9 +9,9 @@ class AppConfig(BaseSettings):
     SHARDS: str | None = None
     SALESFORCE: str | None = None
     CACHE: str | None = None
-    HF_HOME: str | None = None
-    HF_DATASETS_CACHE: str | None = None
-    TRANSFORMERS_CACHE: str | None = None
+    # HF_HOME: str | None = None
+    # HF_DATASETS_CACHE: str | None = None
+    # TRANSFORMERS_CACHE: str | None = None
     
     def __init__(self):
         load_dotenv()
