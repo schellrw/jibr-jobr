@@ -12,20 +12,20 @@ def query(payload):
 
 # Add title and subtitle to the main interface of the app
 st.title("Jibr-Jobr: turn the jibberish into a job description, and more!")
-st.subheader(":blue[Job Description Synthesis, at the Click of a Button.\nTurn jibberish into a job description to attract top talent!]")
+st.subheader("Job Description Synthesis, at the Click of a Button.\nTurn jibberish into a job description to attract top talent!")
 
 #st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.")
 
 # Add sidebar to the app
-st.sidebar.markdown(":blue[Developed @ Agentsia, subsidiary of Artificial Intelligentsia, LLC]")
+st.sidebar.markdown(":blue[Developed at AgentC Laboratories]")
 st.sidebar.markdown("### Competitive Intelligence Solutions")
 # st.sidebar.markdown("##### https://artificialintelligentsia.com/")
-st.sidebar.markdown(":gray[Copyright © 2024. Artificial Intelligentsia, LLC.  All rights reserved.]")
+st.sidebar.markdown(":gray[Copyright © 2024. Artificial Intelligentsia, LLC (AI-LLC).  All rights reserved.  AgentC Laboratories is a subsidiary of AI-LLC.]")
 
 col1, col2 = st.columns(2)
 with col1:
-    text_input = st.text_area("Sup dude, paste some job jibberish here...", height=420)
-    text_input = text_input + "\n\nCan you summarize this jibberish into a formal job description?"
+    text_input = st.text_area("HEY CHUCK, paste some job jibberish here...", height=420)
+    text_input = text_input + "\n\nPlease summarize that into a formal job description."
 with col2:
     submit = st.button("Synthesize")
     if text_input and submit:
