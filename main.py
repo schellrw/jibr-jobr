@@ -17,9 +17,9 @@ st.subheader(":blue[Job Description Synthesis, at the Click of a Button.\nTurn j
 #st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.")
 
 # Add sidebar to the app
-st.sidebar.markdown(":blue[Developed at Artificial Intelligentsia, LLC]")
-st.sidebar.markdown("#### Contact us for Competitive Intelligence Solutions")
-st.sidebar.markdown("##### https://artificialintelligentsia.com/")
+st.sidebar.markdown(":blue[Developed @ Agentsia, subsidiary of Artificial Intelligentsia, LLC)]")
+st.sidebar.markdown("### Competitive Intelligence Solutions")
+# st.sidebar.markdown("##### https://artificialintelligentsia.com/")
 st.sidebar.markdown(":gray[Copyright 2024. Artificial Intelligentsia, LLC.  All rights reserved.]")
 
 col1, col2 = st.columns(2)
