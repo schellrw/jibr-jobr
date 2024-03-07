@@ -13,7 +13,7 @@ def query(payload):
 # Add title and subtitle to the main interface of the app
 st.title("Jibr-Jobr: turn the jibberish into a job description, and more!")
 st.subheader("Job Description Synthesis, at the Click of a Button!")
-st.markdown(":blue[Generate job descriptions that attract top talent!")]
+st.markdown(":blue[Generate job descriptions that attract top talent!]")
 
 #st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.")
 
