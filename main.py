@@ -1,8 +1,8 @@
 import requests
 import streamlit as st
 
-headers = [{"Authorization": f"Bearer {st.secrets.API_TOKEN}"}, 
-           {"Context":"Please summarize this into a job description."}]
+headers = {"Authorization": f"Bearer {st.secrets.API_TOKEN}"}
+        # [{"Context":"Please summarize this into a job description."}]
 API_URL = f"https://api-inference.huggingface.co/models/{st.secrets.MODEL}"
 
 @st.cache_data
