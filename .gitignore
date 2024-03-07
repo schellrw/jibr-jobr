@@ -1,6 +1,7 @@
 # user-defined virtual environments
 metro/
 cache/
+old/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

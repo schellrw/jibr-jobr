@@ -6,13 +6,17 @@ from pydantic_settings import BaseSettings
 class AppConfig(BaseSettings):
     """The configuration class."""
     
-    CACHE: str | None = None
-    GEMMA: str | None = None
+    MODEL: str | None = None
     API_TOKEN: str | None = None
-    # HF_HOME: str | None = None
-    # HF_DATASETS_CACHE: str | None = None
-    # TRANSFORMERS_CACHE: str | None = None
     
     def __init__(self):
         load_dotenv()
         super().__init__()
+
+
+    # def __init__(self, MODEL, API_TOKEN):
+    #     self.MODEL = MODEL
+    #     self.API_TOKEN = API_TOKEN
+
+        # load_dotenv()
+        # super().__init__()
