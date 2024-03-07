@@ -1,4 +1,5 @@
 # user-defined virtual environments
+secret/
 metro/
 cache/
 old/
