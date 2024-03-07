@@ -25,6 +25,7 @@ st.sidebar.markdown(":gray[Copyright © 2024. Artificial Intelligentsia, LLC.  A
 col1, col2 = st.columns(2)
 with col1:
     text_input = st.text_area("Sup dude, paste some job jibberish here...", height=420)
+    text_input = text_input + "\n\nCan you summarize this jibberish into a formal job description?"
 with col2:
     submit = st.button("Sythesize")
     if text_input and submit:
