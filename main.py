@@ -19,10 +19,10 @@ st.markdown(":blue[Generate job descriptions that attract top talent!]")
 
 # Add sidebar to the app
 st.sidebar.markdown("### Competitive Intelligence Solutions for Today's Market")
-st.sidebar.markdown(":blue[#### Developed @ AgentC Laboratories]")
+st.sidebar.markdown("#### :blue[Developed @ AgentC Laboratories]")
 # st.sidebar.markdown("##### https://artificialintelligentsia.com/")
-st.sidebar.markdown(":gray[#### Copyright 2024. Artificial Intelligentsia, LLC\nAll rights reserved.]")
-st.sidebar.markdown(":gray[##### AgentC Laboratories is a subsidiary of\n Artificial Intelligentsia, LLC.]")
+st.sidebar.markdown("#####:gray[Copyright 2024. Artificial Intelligentsia, LLC\nAll rights reserved.]")
+st.sidebar.markdown("######:gray[AgentC Laboratories is a subsidiary of\n Artificial Intelligentsia, LLC.]")
 
 col1, col2 = st.columns(2)
 with col1:
