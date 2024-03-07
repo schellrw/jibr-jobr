@@ -30,7 +30,7 @@ with col2:
     submit = st.button("Sythesize")
     if text_input and submit:
         job_desc = query({"inputs": text_input})
-        text_output = st.text_area(st.write(job_desc), height=420)
+        st.text_area(st.write(job_desc), height=420)
 
         st.download_button(
             label="Download summary",
