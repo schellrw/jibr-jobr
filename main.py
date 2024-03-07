@@ -33,9 +33,9 @@ with col2:
         job_desc = st.write(job_desc, height=420, label="GENERATED JOB DESCRIPTION:")
         # st.text_area(job_desc, height=420, label="GENERATED JOB DESCRIPTION:")
 
-        st.download_button(
-            label="Download summary",
-            data=job_desc,
-            file_name="summary.txt",
-            mime="text/plain",
-        )
+        # st.download_button(
+        #     label="Download summary",
+        #     data=job_desc,
+        #     file_name="summary.txt",
+        #     mime="text/plain",
+        # )
