@@ -6,9 +6,8 @@ from pydantic_settings import BaseSettings
 class AppConfig(BaseSettings):
     """The configuration class."""
     
-    SHARDS: str | None = None
-    SALESFORCE: str | None = None
     CACHE: str | None = None
+    GEMMA: str | None = None
     API_TOKEN: str | None = None
     # HF_HOME: str | None = None
     # HF_DATASETS_CACHE: str | None = None
