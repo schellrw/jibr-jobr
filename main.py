@@ -27,7 +27,7 @@ with col1:
     text_input = st.text_area("Sup dude, paste some job jibberish here...", height=420)
     text_input = text_input + "\n\nCan you summarize this jibberish into a formal job description?"
 with col2:
-    submit = st.button("Sythesize")
+    submit = st.button("Synthesize")
     if text_input and submit:
         job_desc = query({"inputs": text_input})
         job_desc = st.write(job_desc, height=420, label="GENERATED JOB DESCRIPTION:")
