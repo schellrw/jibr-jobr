@@ -26,7 +26,7 @@ st.sidebar.markdown("###### :gray[AgentC Laboratories is a subsidiary of Artific
 
 col1, col2 = st.columns(2)
 with col1:
-    text_input = st.text_area("HEY ALAN, paste some job jibberish here...", height=420)
+    text_input = st.text_area("HEY Roberto, paste some job jibberish here...", height=420)
     text_input = text_input + "\n\nPlease summarize that into a formal job description."
 with col2:
     submit = st.button("Synthesize")
