@@ -11,22 +11,16 @@ def query(payload):
     return response.json()
 
 # Add title and subtitle to the main interface of the app
-st.title("Jibr-Jobr: turn the jibberish into a job description, and more!")
-st.subheader("Job Description Synthesis, at the Click of a Button!")
-st.markdown(":blue[Generate job descriptions that attract top talent!]")
-
-#st.markdown("## Competitive intelligence and easy-to-use technology platforms are just a click away.")
+st.title("Jibr-Jobr")
+st.markdown(":blue[Turn the jibberish into a job description at the click of a button]")
 
 # Add sidebar to the app
 st.sidebar.markdown("### Competitive Intelligence Solutions")
-st.sidebar.markdown("#### :blue[Developed @ AgentC Laboratories]")
-# st.sidebar.markdown("##### https://artificialintelligentsia.com/")
-st.sidebar.markdown("##### :gray[Copyright 2024. Artificial Intelligentsia, LLC.      All rights reserved.]")
-st.sidebar.markdown("###### :gray[AgentC Laboratories is a subsidiary of Artificial Intelligentsia, LLC.]")
+st.sidebar.markdown("##### :gray[Copyright 2024. Artificial Intelligentsia, LLC.  All rights reserved.]")
 
 col1, col2 = st.columns(2)
 with col1:
-    text_input = st.text_area("HEY Roberto, paste some job jibberish here...", height=420)
+    text_input = st.text_area("Hey Chuck, paste some job jibberish here...", height=420)
     text_input = text_input + "\n\nPlease summarize that into a formal job description."
 with col2:
     submit = st.button("Synthesize")
