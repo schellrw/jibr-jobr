@@ -15,12 +15,13 @@ st.title("Jibr-Jobr")
 st.markdown(":blue[Turn the jibberish into a job description at the click of a button]")
 
 # Add sidebar to the app
-st.sidebar.markdown("### Competitive Intelligence Solutions")
-st.sidebar.markdown("##### :gray[Copyright 2024. Artificial Intelligentsia, LLC.  All rights reserved.]")
+st.sidebar.markdown("### :blue[Competitive Intelligence Solutions]")
+st.sidebar.markdown("##### :gray[Copyright 2024. Artificial Intelligentsia, LLC.]")
+st.sidebar.markdown("##### :gray[All rights reserved.]")
 
 col1, col2 = st.columns(2)
 with col1:
-    text_input = st.text_area("Hey Chuck, paste some job jibberish here...", height=420)
+    text_input = st.text_area("Paste some job jibberish here...", height=420)
     text_input = text_input + "\n\nPlease summarize that into a formal job description."
 with col2:
     submit = st.button("Synthesize")
